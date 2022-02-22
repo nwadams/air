@@ -1,0 +1,36 @@
+root = ""
+tmp_dir = "/tmp"
+
+[build]
+  bin = "/tmp/main"
+  cmd = "sleep 4 && go build -gcflags='all=-N -l' -o /tmp/main check_rebuild/main.go"
+  delay = 1000
+  exclude_dir = []
+  exclude_file = []
+  exclude_regex = []
+  exclude_unchanged = false
+  follow_symlink = false
+  # Optionally run with dlv to use debugger and accept connections on 2345
+  # Swap the comments on the `full_bin` lines below to enable debugging support
+  full_bin = ""
+  # full_bin = "dlv exec --accept-multiclient --log --headless --continue --listen :2345 --api-version 2 /tmp/main"
+  # remove go/src from include_dir to stop live reloading for debugging.
+  include_dir = ["check_rebuild"]
+  include_ext = ["go", "yaml", "json", "yml"]
+  kill_delay = "0s"
+  log = "build-errors.log"
+  send_interrupt = true
+  stop_on_error = true
+
+[color]
+  app = ""
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  time = false
+
+[misc]
+  clean_on_exit = false
